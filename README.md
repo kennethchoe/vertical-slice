@@ -22,4 +22,5 @@ Tested on Windows 10 20H2 OS Build 19042.867.
 6. Run `docker-build.sh` to build docker images.
 7. Run `docker-dev-run.sh` to instantiate docker containers in dev mode.
     - dev mode in web-api does not redirect http to https.
+    - Open http://localhost:8082 to see the app running.
 8. Do git commit/push in WSL console. (That is most simple option.)
