@@ -7,7 +7,7 @@ A prototype for linux development on WSL.
 1. Be able to develop full stack with debug and watch capability with VSCode DevContainer.
 2. Produce configurable containers for deployment.
 
-## Preparation
+## How to Use
 
 Tested on Windows 10 20H2 OS Build 19042.867.
 
