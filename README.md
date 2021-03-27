@@ -1,6 +1,6 @@
 # vertical-slice
 
-A prototype for linux development on WSL.
+A tracerbullet for linux development on WSL.
 
 ## Goals
 
