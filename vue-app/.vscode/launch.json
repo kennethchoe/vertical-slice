@@ -11,7 +11,7 @@
                 "run",
                 "serve",
                 "--prefix",
-                "app"
+                "src"
             ],
             "runtimeExecutable": "npm",
             "skipFiles": [
