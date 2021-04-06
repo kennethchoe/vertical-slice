@@ -8,7 +8,6 @@
 </template>
 <script>
 import axios from 'axios'
-import env from '../env'
 
 export default {
     data() {
@@ -18,7 +17,7 @@ export default {
     },
     methods: {
         refresh() {
-            axios.get(`${env.serviceUrl}/api/WeatherForecast`)
+            axios.get('/api/WeatherForecast')
             .then(r => {
                 this.daysInfo = r.data
             })
