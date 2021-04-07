@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <Weather/>
+    <br/>
+    <FromSql/>
   </div>
 </template>
 
 <script>
 import Weather from './components/Weather.vue'
+import FromSql from './components/FromSql.vue'
 
 export default {
   name: 'App',
   components: {
-    Weather
+    Weather,
+    FromSql
   }
 }
 </script>

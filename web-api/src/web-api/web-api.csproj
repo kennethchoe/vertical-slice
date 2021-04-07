@@ -5,5 +5,10 @@
     <RootNamespace>web_api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="dapper" Version="2.0.78" />
+    <PackageReference Include="system.data.sqlclient" Version="4.8.2" />
+  </ItemGroup>
+
 
 </Project>
