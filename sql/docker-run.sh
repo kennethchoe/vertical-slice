@@ -22,7 +22,7 @@ docker run -d  -p:$DockerSqlPort:1433 --label 'vertical-slice-sql' \
 export existingContainerId="$(docker ps -aq --filter label=vertical-slice-sql)"
 
 # wait until the service launches: need better way
-sleep 10
+sleep 15
 
 # initial password is available via EV. change it for security purposes.
 docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd \
@@ -30,11 +30,12 @@ docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd \
    -Q 'ALTER LOGIN SA WITH PASSWORD="'$DockerSaPassword'"'
 
 # restore backup
-rm ./backup/*.bak -f
-tar -xvf vertical-slice-legacy-backup.tar.gz --directory backup
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+rm $DIR/backup/*.bak -f
+tar -xvf $DIR/vertical-slice-legacy-backup.tar.gz --directory $DIR/backup
 
 docker exec -it $existingContainerId mkdir /var/opt/mssql/backup
-docker cp $PWD/backup/*.bak $existingContainerId:/var/opt/mssql/backup
+docker cp $DIR/backup/*.bak $existingContainerId:/var/opt/mssql/backup
 
 docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd -S localhost \
    -U SA -P $DockerSaPassword \
