@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="refresh">Refresh</button>
+        <button @click="refresh">Refresh Weather</button>
         <li v-for="dayInfo in daysInfo" :key="dayInfo.date">
             {{ dayInfo.date }}: {{ dayInfo.summary }}
         </li>
