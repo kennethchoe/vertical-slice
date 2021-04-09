@@ -11,5 +11,13 @@
         <div class="content__text">
             <h1>ServerName: {{value: ServerName}}</h1>
         </div>
+        <div>
+            <dot:Button Click="{command: RefreshFromSql()}" Text="Refresh From Sql" />
+        </div>
+        <div class="content__text">
+            <h1>LocalCount: {{value: LocalCount}}</h1>
+            <h1>Id: {{value: Id}}</h1>
+            <h1>CreatedDateTimeUtc: {{value: CreatedDateTimeUtc}}</h1>
+        </div>
     </div>
 </dot:Content>

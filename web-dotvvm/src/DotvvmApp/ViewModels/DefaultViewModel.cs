@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Threading.Tasks;
-using DotVVM.Framework.ViewModel;
-using System.Net.Http;
-using DotVVM.Framework.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
 
 namespace DotvvmApp.ViewModels
 {
@@ -12,23 +7,30 @@ namespace DotvvmApp.ViewModels
     {
         private readonly WebApiClient _webApiClient;
 
-		[ActivatorUtilitiesConstructor]
         public DefaultViewModel(WebApiClient webApiClient)
 		{
             _webApiClient = webApiClient;
+			Title = "Hello from DotVVM!";
+            LocalCount = 1;
         }
 		
 		public string Title { get; set;}
 		public string ServerName {get; set;}
-
-        public DefaultViewModel()
-		{
-			Title = "Hello from DotVVM!";
-		}
+        public int LocalCount {get; set;}
+        public int Id {get; set;}
+        public DateTime CreatedDateTimeUtc {get;set;}
 
         public override async Task Load()
         {
 			ServerName = await _webApiClient.GetServerName();
+        }
+
+        public async Task RefreshFromSql()
+        {
+            LocalCount++;
+            var fromSql = await _webApiClient.GetFromSql();
+            Id = fromSql.Id;
+            CreatedDateTimeUtc = fromSql.CreatedDateUtc;
         }
     }
 }
