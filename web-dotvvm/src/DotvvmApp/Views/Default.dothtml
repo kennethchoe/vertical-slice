@@ -1,0 +1,23 @@
+﻿@viewModel DotvvmApp.ViewModels.DefaultViewModel, DotvvmApp
+@masterPage Views/MasterPage.dotmaster
+<dot:Content ContentPlaceHolderID="MainContent">
+	<div class="content">
+        <a href="https://www.dotvvm.com/" target="_blank">
+            <img src="/Resources/Images/text.svg" class="content__image" />
+        </a>
+        <div class="content__text">
+            <h1>{{value: Title}}</h1>
+        </div>
+        <div class="content__text">
+            <h1>Web API Server Name: {{value: ServerName}}</h1>
+        </div>
+        <div>
+            <dot:Button Click="{command: RefreshFromSql()}" Text="Refresh From Sql" />
+        </div>
+        <div class="content__text">
+            <h1>LocalCount: {{value: LocalCount}}</h1>
+            <h1>Id: {{value: Id}}</h1>
+            <h1>CreatedDateTimeUtc: {{value: CreatedDateTimeUtc}}</h1>
+        </div>
+    </div>
+</dot:Content>
