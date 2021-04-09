@@ -1,21 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotVVM.Framework.ViewModel;
+using System.Net.Http;
 using DotVVM.Framework.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace DotvvmApp.ViewModels
 {
     public class DefaultViewModel : MasterPageViewModel
     {
-		public string Title { get; set;}
+        private readonly WebApiClient _webApiClient;
 
-		public DefaultViewModel()
+		[ActivatorUtilitiesConstructor]
+        public DefaultViewModel(WebApiClient webApiClient)
+		{
+            _webApiClient = webApiClient;
+        }
+		
+		public string Title { get; set;}
+		public string ServerName {get; set;}
+
+        public DefaultViewModel()
 		{
 			Title = "Hello from DotVVM!";
 		}
+
+        public override async Task Load()
+        {
+			ServerName = await _webApiClient.GetServerName();
+        }
     }
 }
