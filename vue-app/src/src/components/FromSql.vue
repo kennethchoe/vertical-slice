@@ -1,5 +1,7 @@
 <template>
     <div>
+        <div>Web API server name: {{ serverName }}</div>
+        <br/>
         <button @click="refresh">Refresh From Sql</button>
         <li v-for="rec in recs" :key="rec.Id">
             {{ rec.id }}: {{ rec.createdDateUtc }}
@@ -12,8 +14,15 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            recs: []
+            recs: [],
+            serverName: ""
         }
+    },
+    mounted() {
+        axios.get('/api/serverInfo')
+        .then(r => {
+            this.serverName = r.data
+        })
     },
     methods: {
         refresh() {

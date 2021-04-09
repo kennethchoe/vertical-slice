@@ -9,7 +9,7 @@
             <h1>{{value: Title}}</h1>
         </div>
         <div class="content__text">
-            <h1>ServerName: {{value: ServerName}}</h1>
+            <h1>Web API Server Name: {{value: ServerName}}</h1>
         </div>
         <div>
             <dot:Button Click="{command: RefreshFromSql()}" Text="Refresh From Sql" />
