@@ -7,7 +7,7 @@
       try_files $uri $uri/ /index.html;
     }
     location /api {
-      proxy_pass ${WEBAPI_ENDPOINT};
+      proxy_pass ${VerticalSliceConfig__ApiEndpoint};
     }
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {

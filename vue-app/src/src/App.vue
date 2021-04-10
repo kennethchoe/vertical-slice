@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <h2>Web API server name: {{ serverName }}</h2>
+    <br/>
     <Weather/>
     <br/>
     <FromSql/>
@@ -7,6 +10,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Weather from './components/Weather.vue'
 import FromSql from './components/FromSql.vue'
 
@@ -15,6 +19,17 @@ export default {
   components: {
     Weather,
     FromSql
+  },
+  data() {
+    return {
+      serverName: ""
+    }
+  },
+  mounted() {
+    axios.get('/api/serverInfo')
+    .then(r => {
+        this.serverName = r.data
+    })
   }
 }
 </script>
