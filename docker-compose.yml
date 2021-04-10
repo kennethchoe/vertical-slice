@@ -2,7 +2,7 @@ version: "3.9"
 services:
     web-api:
         build: ./web-api/src
-        image: vertical-slice/web-api
+        image: ${DOCKER_REGISTRY}vertical-slice/web-api
         ports:
             - "${WEB_API_PORT}:80"
             - "${WEB_API_PORT_HTTPS}:443"
@@ -11,7 +11,7 @@ services:
             - ConnectionStrings__DefaultConnection
     vue-app:
         build: ./vue-app/src
-        image: vertical-slice/vue-app
+        image: ${DOCKER_REGISTRY}vertical-slice/vue-app
         depends_on:
             - web-api
         ports:
@@ -22,7 +22,7 @@ services:
             - VerticalSliceConfig__ApiEndpoint
     web-dotvvm:
         build: ./web-dotvvm/src
-        image: vertical-slice/web-dotvvm
+        image: ${DOCKER_REGISTRY}vertical-slice/web-dotvvm
         depends_on:
             - web-api
         ports:
