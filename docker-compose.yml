@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+    web-api:
+        build: ./web-api/src
+        image: vertical-slice/web-api
+        ports:
+            - "${WEB_API_PORT}:80"
+            - "${WEB_API_PORT_HTTPS}:443"
+        environment:
+            - ASPNETCORE_ENVIRONMENT
+            - ConnectionStrings__DefaultConnection
+    vue-app:
+        build: ./vue-app/src
+        image: vertical-slice/vue-app
+        depends_on:
+            - web-api
+        ports:
+            - "${VUE_APP_PORT}:80"
+            - "${VUE_APP_PORT_HTTPS}:443"
+        environment:
+            - NODE_ENV
+            - VerticalSliceConfig__ApiEndpoint
+    web-dotvvm:
+        build: ./web-dotvvm/src
+        image: vertical-slice/web-dotvvm
+        depends_on:
+            - web-api
+        ports:
+            - "${WEB_DOTVVM_PORT}:80"
+            - "${WEB_DOTVVM_PORT_HTTPS}:443"
+        environment:
+            - ASPNETCORE_ENVIRONMENT
+            - VerticalSliceConfig__ApiEndpoint

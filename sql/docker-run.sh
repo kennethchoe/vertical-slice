@@ -6,11 +6,11 @@ export existingContainerId="$(docker ps -aq --filter label=vertical-slice-sql)"
 if [[ -n $existingContainerId ]]; then
     export existingContainerStatus="$(docker inspect --type container $existingContainerId --format='{{.State.Status}}')"
     if [[ $existingContainerStatus = "running" ]]; then
-        echo "container found running: $existingContainerId"
+        echo "SQL Server container found running: $existingContainerId"
         return
     fi
     docker start $existingContainerId
-    echo "docker start: $existingContainerId"
+    echo "SQL Server container start: $existingContainerId"
     return
 fi
 
@@ -21,8 +21,13 @@ docker run -d  -p:$DockerSqlPort:1433 --label 'vertical-slice-sql' \
 
 export existingContainerId="$(docker ps -aq --filter label=vertical-slice-sql)"
 
-# wait until the service launches: need better way
-sleep 15
+# wait until the service launches
+until docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd \
+   -S localhost -U SA -P 'P@ssw0rd' \
+   -Q 'select "Service is available now."'; do
+    >&2 echo "SQL server is unavailable - sleeping"
+    sleep 1
+done
 
 # initial password is available via EV. change it for security purposes.
 docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd \
