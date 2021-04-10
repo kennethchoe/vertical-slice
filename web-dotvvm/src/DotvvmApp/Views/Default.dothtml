@@ -2,7 +2,7 @@
 @masterPage Views/MasterPage.dotmaster
 <dot:Content ContentPlaceHolderID="MainContent">
 	<div class="content">
-        <div class="content__text">
+        <div>
             <h1>Web API Server Name: {{value: ServerName}}</h1>
         </div>
         <div>
@@ -12,7 +12,7 @@
         <div>
             <dot:Button Click="{command: RefreshFromWeatherCast()}" Text="Get Weather Forecast" />
         </div>
-        <div class="content__text">
+        <div>
             <dot:GridView DataSource="{value: WeatherForecast}">
                 <Columns>
                     <dot:GridViewTextColumn valueBinding="{value: Date}" HeaderText="Date"/>
@@ -24,7 +24,7 @@
         <div>
             <dot:Button Click="{command: RefreshFromSql()}" Text="Refresh From Sql" />
         </div>
-        <div class="content__text">
+        <div>
             {{value: LegacyTable1Record.Id}}, {{value: LegacyTable1Record.CreatedDateUtc}}
         </div>
         <a href="https://www.dotvvm.com/" target="_blank">

@@ -11,7 +11,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/web-api/bin/Debug/netcoreapp3.1/web-api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src",
+            "cwd": "${workspaceFolder}/src/web-api",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
