@@ -2,22 +2,33 @@
 @masterPage Views/MasterPage.dotmaster
 <dot:Content ContentPlaceHolderID="MainContent">
 	<div class="content">
-        <a href="https://www.dotvvm.com/" target="_blank">
-            <img src="/Resources/Images/text.svg" class="content__image" />
-        </a>
-        <div class="content__text">
-            <h1>{{value: Title}}</h1>
-        </div>
         <div class="content__text">
             <h1>Web API Server Name: {{value: ServerName}}</h1>
         </div>
         <div>
+            Local Count: {{value: LocalCount}} <dot:Button Click="{command: IncreaseLocalCount()}" Text="Increase" />
+        </div>
+        <br/>
+        <div>
+            <dot:Button Click="{command: RefreshFromWeatherCast()}" Text="Get Weather Forecast" />
+        </div>
+        <div class="content__text">
+            <dot:GridView DataSource="{value: WeatherForecast}">
+                <Columns>
+                    <dot:GridViewTextColumn valueBinding="{value: Date}" HeaderText="Date"/>
+                    <dot:GridViewTextColumn valueBinding="{value: Summary}" HeaderText="Summary"/>
+                </Columns>
+            </dot:GridView>
+        </div>
+        <br/>
+        <div>
             <dot:Button Click="{command: RefreshFromSql()}" Text="Refresh From Sql" />
         </div>
         <div class="content__text">
-            <h1>LocalCount: {{value: LocalCount}}</h1>
-            <h1>Id: {{value: Id}}</h1>
-            <h1>CreatedDateTimeUtc: {{value: CreatedDateTimeUtc}}</h1>
+            {{value: LegacyTable1Record.Id}}, {{value: LegacyTable1Record.CreatedDateUtc}}
         </div>
+        <a href="https://www.dotvvm.com/" target="_blank">
+            <img src="/Resources/Images/text.svg" class="content__image" />
+        </a>
     </div>
 </dot:Content>

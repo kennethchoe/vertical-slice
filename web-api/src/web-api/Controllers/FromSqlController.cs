@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
+using web_api.VerticalSlice.Api.Client;
 
 namespace web_api.Controllers
 {
@@ -17,9 +19,9 @@ namespace web_api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<LegacyTable1Record> Get()
+        public async Task<IEnumerable<LegacyTable1Record>> Get()
         {
-            var recs = _conn.Query<LegacyTable1Record>(@"
+            var recs = await _conn.QueryAsync<LegacyTable1Record>(@"
 insert into LegacyTable1(CreatedDateUtc) values(getutcdate());
 select Id, CreatedDateUtc from LegacyTable1 where Id = scope_identity()
 ");

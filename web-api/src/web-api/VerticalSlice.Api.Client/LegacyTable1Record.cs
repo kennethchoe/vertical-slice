@@ -1,6 +1,6 @@
 using System;
 
-namespace web_api.Controllers
+namespace web_api.VerticalSlice.Api.Client
 {
     public class LegacyTable1Record
     {

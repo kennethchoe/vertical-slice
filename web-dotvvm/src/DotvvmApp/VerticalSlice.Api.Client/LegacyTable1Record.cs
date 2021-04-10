@@ -1,6 +1,6 @@
 using System;
 
-namespace DotvvmApp.ViewModels
+namespace DotvvmApp.VerticalSlice.Api.Client
 {
     public class LegacyTable1Record
     {
