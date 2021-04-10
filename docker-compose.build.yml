@@ -1,0 +1,7 @@
+services:
+    web-api:
+        build: ./web-api/src
+    vue-app:
+        build: ./vue-app/src
+    web-dotvvm:
+        build: ./web-dotvvm/src

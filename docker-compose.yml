@@ -1,7 +1,6 @@
 version: "3.9"
 services:
     web-api:
-        build: ./web-api/src
         image: ${DOCKER_REGISTRY}vertical-slice/web-api
         ports:
             - "${WEB_API_PORT}:80"
@@ -10,7 +9,6 @@ services:
             - ASPNETCORE_ENVIRONMENT
             - ConnectionStrings__DefaultConnection
     vue-app:
-        build: ./vue-app/src
         image: ${DOCKER_REGISTRY}vertical-slice/vue-app
         depends_on:
             - web-api
@@ -21,7 +19,6 @@ services:
             - NODE_ENV
             - VerticalSliceConfig__ApiEndpoint
     web-dotvvm:
-        build: ./web-dotvvm/src
         image: ${DOCKER_REGISTRY}vertical-slice/web-dotvvm
         depends_on:
             - web-api
