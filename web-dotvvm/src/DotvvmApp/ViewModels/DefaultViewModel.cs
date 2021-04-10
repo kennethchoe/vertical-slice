@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using DotVVM.Framework.ViewModel;
 using DotvvmApp.VerticalSlice.Api.Client;
 
 namespace DotvvmApp.ViewModels
@@ -15,10 +15,23 @@ namespace DotvvmApp.ViewModels
             LocalCount = 1;
         }
 		
-		public string Title { get; set;}
+		[Bind(Direction.ServerToClientFirstRequest)]
 		public string ServerName {get; set;}
+
         public int LocalCount {get; set;}
+
+        /*
+        [Bind(Direction.ServerToClient)] can be used to note client doesn't need to send these to the server.
+        This improves the performance a little bit, but the side effect is that the postback page will not show the other side.
+        
+        Alternatively,
+        1. We can always populate entire view model, if that is cheaper than View Model travel.
+        2. We can use REST API Bindings: https://www.dotvvm.com/docs/tutorials/basics-optimizing-postbacks/2.0
+        */
+        //[Bind(Direction.ServerToClient)]
         public LegacyTable1Record LegacyTable1Record {get; set;}
+
+        //[Bind(Direction.ServerToClient)]
         public IEnumerable<WeatherForecast> WeatherForecast {get; set;}
 
         public override async Task Load()
