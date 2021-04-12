@@ -7,11 +7,11 @@ if [[ -n $existingContainerId ]]; then
     export existingContainerStatus="$(docker inspect --type container $existingContainerId --format='{{.State.Status}}')"
     if [[ $existingContainerStatus = "running" ]]; then
         echo "SQL Server container found running: $existingContainerId"
-        return
+        [[ $SHLVL -gt 2 ]] && return || exit
     fi
     docker start $existingContainerId
     echo "SQL Server container start: $existingContainerId"
-    return
+    [[ $SHLVL -gt 2 ]] && return || exit
 fi
 
 docker run -d  -p:$DockerSqlPort:1433 --label 'vertical-slice-sql' \
@@ -24,8 +24,8 @@ export existingContainerId="$(docker ps -aq --filter label=vertical-slice-sql)"
 # wait until the service launches
 until docker exec -it $existingContainerId /opt/mssql-tools/bin/sqlcmd \
    -S localhost -U SA -P 'P@ssw0rd' \
-   -Q 'select "Service is available now."'; do
-    >&2 echo "SQL server is unavailable - sleeping"
+   -Q 'select "SQL service is available now."'; do
+    >&2 echo "SQL service is not available yet - waiting..."
     sleep 1
 done
 

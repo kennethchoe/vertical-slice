@@ -2,4 +2,4 @@
 code vue-app
 code web-api
 code web-dotvvm
-. ./sql/docker-run.sh
+. ./sql/run.sh

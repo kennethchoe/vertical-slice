@@ -9,4 +9,4 @@ if [[ -n $existingContainerId ]]; then
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-. $DIR/docker-run.sh
+. $DIR/run.sh
