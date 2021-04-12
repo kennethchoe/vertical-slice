@@ -7,11 +7,11 @@ if [[ -n $existingContainerId ]]; then
     export existingContainerStatus="$(docker inspect --type container $existingContainerId --format='{{.State.Status}}')"
     if [[ $existingContainerStatus = "running" ]]; then
         echo "SQL Server container found running: $existingContainerId"
-        [[ $SHLVL -gt 2 ]] && return || exit
+        return || exit
     fi
     docker start $existingContainerId
     echo "SQL Server container start: $existingContainerId"
-    [[ $SHLVL -gt 2 ]] && return || exit
+    return || exit
 fi
 
 docker run -d  -p:$DockerSqlPort:1433 --label 'vertical-slice-sql' \
