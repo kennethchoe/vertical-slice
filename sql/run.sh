@@ -1,5 +1,5 @@
 #!/bin/bash
-DockerSqlPort=1401
+DockerSqlPort=41403
 DockerSaPassword="StrongP@ssw0rd"
 
 export existingContainerId="$(docker ps -aq --filter label=vertical-slice-sql)"
