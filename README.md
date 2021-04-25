@@ -24,3 +24,13 @@ Tested on Windows 10 20H2 OS Build 19042.867.
     - dev mode in web-api does not redirect http to https.
     - Open http://localhost:8082 and http://localhost:8084 to see the app running.
 8. Do git commit/push in WSL console. (That is most simple option.)
+
+## Testing the Images from Docker Hub
+
+When you push, github action triggers pushing new docker images to docker hub. To configure this,
+
+1. If you cloned this repo,
+    1. On your github repo's Settings, define 2 secrets: REGISTRY_USERNAME and REGISTRY_PASSWORD
+    2. Modify `.env-docker-hub` first line, `DOCKER_REGISTRY` to your REGISTRY_USERNAME value.
+2. When there is push to github reposotiry, `.github/workflows/docker-image.yml` will push new image to the docker hub using `push-docker-images.sh`.
+3. Run `run-docker-hub.sh` to run services using the images from Docker Hub.

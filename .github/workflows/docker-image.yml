@@ -15,21 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Build the Docker image
-      run: ./build.sh
-      
     - name: Set login for Docker Hub
       uses: azure/docker-login@v1
       with:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
-    - name: Push Docker Image
-      run: |
-        imageNamePrefix='${{ secrets.REGISTRY_USERNAME }}/'
-        imageNames=(`. ./get-docker-images-to-push.sh`)
-        for imageName in "${imageNames[@]}"
-        do
-            docker tag $imageName "$imageNamePrefix$imageName"
-            docker push "$imageNamePrefix$imageName"
-        done
+    - name: Build and Push Docker Image
+      run: . ./push-docker-images.sh '${{ secrets.REGISTRY_USERNAME }}' 'latest'
