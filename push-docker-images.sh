@@ -3,6 +3,10 @@ imageNamePrefix=$1
 tagname1=$2
 tagname2=$3
 
+#break build script for any error
+#https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
+set -e
+
 ./build.sh
 
 imageNames=(`sed -n -e 's/^[ \t]*image: ${DOCKER_REGISTRY}//p' docker-compose.yml`)
