@@ -27,7 +27,7 @@ jobs:
     - name: Push Docker Image
       run: |
         imageNamePrefix='${{ secrets.REGISTRY_USERNAME }}'
-        $imageNames=(`sed -n -e 's/^[ \t]*image: ${DOCKER_REGISTRY}//p' docker-compose.yml`)
+        imageNames=(`. ./get-docker-images-to-push.sh`)
         for imageName in "${imageNames[@]}"
         do
             docker tag $imageName "$imageNamePrefix$imageName"
