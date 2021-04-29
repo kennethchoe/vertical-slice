@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-dotvvm
+  labels:
+    app: web-dotvvm
+spec:
+  replicas: 3
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: web-dotvvm
+  template:
+    metadata:
+      labels:
+        app: web-dotvvm
+    spec:
+      containers:
+      - image: kennethchoe/web-dotvvm
+        imagePullPolicy: Always
+        name: web-dotvvm
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          - name: VerticalSliceConfig__ApiEndpoint
+            value: "http://$(WEB_API_SERVICE_HOST)"
