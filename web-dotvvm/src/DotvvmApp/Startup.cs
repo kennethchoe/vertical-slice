@@ -41,6 +41,8 @@ namespace DotvvmApp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
+            app.UsePathBase("/web-dotvvm");
+
             // use DotVVM
             var dotvvmConfiguration = app.UseDotVVM<DotvvmStartup>(env.ContentRootPath);
             dotvvmConfiguration.AssertConfigurationIsValid();

@@ -1,13 +1,13 @@
   server {
     listen       80;
     server_name  localhost;
-    location ${RootUrlPath}/ {
+    location /vue-app {
       root   /app;
       index  index.html;
-      try_files $uri $uri/ /index.html;
+      try_files $uri $uri/ index.html;
     }
-    location ${RootUrlPath}/api {
-      proxy_pass ${VerticalSliceConfig__ApiEndpoint};
+    location /vue-app/api {
+      proxy_pass ${VerticalSliceConfig__ApiEndpoint}/api;
     }
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
