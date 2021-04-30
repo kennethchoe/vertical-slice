@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         refresh() {
-            axios.get('/api/WeatherForecast')
+            axios.get('api/WeatherForecast')
             .then(r => {
                 this.daysInfo = r.data
             })

@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('/api/serverInfo')
+    axios.get('api/serverInfo')
     .then(r => {
         this.serverName = r.data
     })

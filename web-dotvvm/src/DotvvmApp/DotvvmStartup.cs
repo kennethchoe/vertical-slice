@@ -32,7 +32,7 @@ namespace DotvvmApp
             // register custom resources and adjust paths to the built-in resources
             config.Resources.Register("Styles", new StylesheetResource()
             {
-                Location = new UrlResourceLocation("~/Resources/style.css")
+                Location = new UrlResourceLocation("Resources/style.css")
             });
         }
 

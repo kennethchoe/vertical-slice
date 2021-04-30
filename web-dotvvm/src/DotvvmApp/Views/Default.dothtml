@@ -3,7 +3,7 @@
 <dot:Content ContentPlaceHolderID="MainContent">
 	<div class="content">
         <a href="https://www.dotvvm.com/" target="_blank">
-            <img src="/Resources/Images/text.svg" class="content__image" />
+            <img src="Resources/Images/text.svg" class="content__image" />
         </a>
         <div>
             <h2>Web API Server Name: {{value: ServerName}}</h2>

@@ -105,7 +105,7 @@
       "Styles": {
         "Location": {
           "$type": "DotVVM.Framework.ResourceManagement.UrlResourceLocation, DotVVM.Framework",
-          "Url": "~/Resources/style.css"
+          "Url": "Resources/style.css"
         },
         "MimeType": "text/css"
       }
