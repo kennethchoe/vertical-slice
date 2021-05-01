@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         refresh() {
-            axios.get('/vue-app/api/FromSql')
+            axios.get('api/FromSql')
             .then(r => {
                 this.recs = r.data
             })

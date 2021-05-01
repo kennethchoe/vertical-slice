@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         refresh() {
-            axios.get('/vue-app/api/WeatherForecast')
+            axios.get('api/WeatherForecast')
             .then(r => {
                 this.daysInfo = r.data
             })
