@@ -17,7 +17,8 @@ Tested on Windows 10 20H2 OS Build 19042.867.
 4. On each VS Code, F5 to launch the app.
     - vue-app runs in watch mode. Any changes are HMRed.
     - web-api runs in debug mode. You can put breakpoint in VS Code.
-    - To run web-api in watch mode, you have to stop the debug, and run `dotnet watch run src/web-api` on the terminal.
+    - To run web-api in watch mode, you have to stop the debug, and run `dotnet watch run src/web-api` on the terminal. 
+    -  Make sure to put `/vue-app` or `/web-dotvvm` at the end of url, like `http://localhost:12345/vue-app`.
 5. Make changes.
 6. Run `build.sh` to build docker images.
 7. Run `run.sh` to instantiate docker containers in dev mode.
@@ -34,3 +35,25 @@ When you push, github action triggers pushing new docker images to docker hub. T
     2. Modify `.env-docker-hub` first line, `DOCKER_REGISTRY` to your REGISTRY_USERNAME value.
 2. When there is push to github reposotiry, `.github/workflows/docker-image.yml` will push new image to the docker hub using `push-docker-images.sh`.
 3. Run `run-docker-hub.sh` to run services using the images from Docker Hub.
+
+## Testing in Kubernetes
+
+1. Install ingress following the instruction from https://kubernetes.github.io/ingress-nginx/deploy/
+2. Add an entry to `hosts` file for the ip address of kubernetes server. (Or, you can modify [ingress.yaml](k8s/ingress.yaml).)
+```
+(ip addr of kubernetes server)  kenneth-ubuntu
+```
+3. Run:
+```
+kubectl apply -f k8s/
+```
+4. Then try the app using:
+```
+curl http://kenneth-ubuntu/vue-app
+curl http://kenneth-ubuntu/web-dotvvm
+```
+
+## Known Issues
+
+- When web-dotvvm is launched via kubernetes, `Refresh Weather` button does not work.
+- SQL service is not hooked up with kubernetes launch yet. `Refresh From Sql` button does not work yet.
