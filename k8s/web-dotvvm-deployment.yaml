@@ -23,4 +23,4 @@ spec:
           - name: ASPNETCORE_ENVIRONMENT
             value: Production
           - name: VerticalSliceConfig__ApiEndpoint
-            value: "http://$(WEB_API_SERVICE_HOST)"
+            value: "http://web-api.default.svc.cluster.local"

@@ -42,8 +42,6 @@ namespace DotvvmApp
         {
             app.UsePathBase("/web-dotvvm");
 
-            app.UsePathBase("/web-dotvvm");
-
             // use DotVVM
             var dotvvmConfiguration = app.UseDotVVM<DotvvmStartup>(env.ContentRootPath);
             dotvvmConfiguration.AssertConfigurationIsValid();

@@ -23,4 +23,4 @@ spec:
           - name: NODE_ENV
             value: production
           - name: VerticalSliceConfig__ApiEndpoint
-            value: "http://$(WEB_API_SERVICE_HOST)"
+            value: "http://web-api.default.svc.cluster.local"
