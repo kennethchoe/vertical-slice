@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kenneth-ubuntu
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1/$3
+spec:
+  rules:
+  - host: kenneth-ubuntu
+    http:
+      paths:
+      - path: /(web-dotvvm)(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: web-dotvvm
+            port:
+              number: 80
+      - path: /(vue-app)(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: vue-app
+            port:
+              number: 80

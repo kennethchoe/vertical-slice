@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('/api/serverInfo')
+    axios.get('/vue-app/api/serverInfo')
     .then(r => {
         this.serverName = r.data
     })
