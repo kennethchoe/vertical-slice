@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: vertical-slice
 data:
-  ConnectionStrings__DefaultConnection: "Data Source=.; User Id=sa; Password=StrongP@ssw0rd; Initial Catalog=vertical-slice;"
+  ConnectionStrings__DefaultConnection: "Data Source=sql-server; User Id=sa; Password=StrongP@ssw0rd; Initial Catalog=vertical-slice;"

@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kenneth-ubuntu
+  name: $DOCKER_HOST_NAME
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$1/$3
 spec:
   rules:
-  - host: kenneth-ubuntu
+  - host: $DOCKER_HOST_NAME
     http:
       paths:
       - path: /(web-dotvvm)(/|$)(.*)

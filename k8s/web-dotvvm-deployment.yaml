@@ -5,7 +5,7 @@ metadata:
   labels:
     app: web-dotvvm
 spec:
-  replicas: 3
+  replicas: 1
   revisionHistoryLimit: 0
   selector:
     matchLabels:

@@ -36,24 +36,8 @@ When you push, github action triggers pushing new docker images to docker hub. T
 2. When there is push to github reposotiry, `.github/workflows/docker-image.yml` will push new image to the docker hub using `push-docker-images.sh`.
 3. Run `run-docker-hub.sh` to run services using the images from Docker Hub.
 
-## Testing in Kubernetes
+## Launching in Kubernetes
 
 1. Install ingress following the instruction from https://kubernetes.github.io/ingress-nginx/deploy/
-2. Add an entry to `hosts` file for the ip address of kubernetes server. (Or, you can modify [ingress.yaml](k8s/ingress.yaml).)
-```
-(ip addr of kubernetes server)  kenneth-ubuntu
-```
-3. Run:
-```
-kubectl apply -f k8s/
-```
-4. Then try the app using:
-```
-curl http://kenneth-ubuntu/vue-app
-curl http://kenneth-ubuntu/web-dotvvm
-```
-
-## Known Issues
-
-- When web-dotvvm is launched via kubernetes, `Refresh Weather` button does not work.
-- SQL service is not hooked up with kubernetes launch yet. `Refresh From Sql` button does not work yet.
+2. If needed, modify `set-DOCKER_HOST_IP_ADDR.sh` to put the desired hostname for `DOCKER_HOST_NAME` where you want ingress to set up for.
+3. Run `run-k8s.sh`
