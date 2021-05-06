@@ -15,4 +15,4 @@ subsets:
   - addresses:
       - ip: $DOCKER_HOST_IP_ADDR
     ports:
-      - port: 41403
+      - port: 51403
