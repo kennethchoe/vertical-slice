@@ -27,3 +27,17 @@ spec:
               configMapKeyRef:
                 name: vertical-slice
                 key: ConnectionStrings__DefaultConnection
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-api
+spec:
+  ports:
+    - port: 80
+      name: http
+    - port: 443
+      name: https
+  type: ClusterIP
+  selector:
+    app: web-api

@@ -24,3 +24,17 @@ spec:
             value: Production
           - name: VerticalSliceConfig__ApiEndpoint
             value: "http://web-api.default.svc.cluster.local"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-dotvvm
+spec:
+  ports:
+    - port: 80
+      name: http
+    - port: 443
+      name: https
+  type: ClusterIP
+  selector:
+    app: web-dotvvm
