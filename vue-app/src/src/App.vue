@@ -6,6 +6,8 @@
     <Weather/>
     <br/>
     <FromSql/>
+    <br/>
+    <HeavyProcess/>
   </div>
 </template>
 
@@ -13,12 +15,14 @@
 import axios from 'axios'
 import Weather from './components/Weather.vue'
 import FromSql from './components/FromSql.vue'
+import HeavyProcess from './components/HeavyProcess.vue'
 
 export default {
   name: 'App',
   components: {
     Weather,
-    FromSql
+    FromSql,
+    HeavyProcess
   },
   data() {
     return {
